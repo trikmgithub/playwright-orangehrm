@@ -1,0 +1,28 @@
+{
+  "employees": [
+    {
+      "firstName": "John",
+      "middleName": "Michael",
+      "lastName": "Doe",
+      "password": "Password123!"
+    },
+    {
+      "firstName": "Jane",
+      "middleName": "Marie",
+      "lastName": "Smith",
+      "password": "SecurePass456!"
+    },
+    {
+      "firstName": "Robert",
+      "middleName": "",
+      "lastName": "Johnson",
+      "password": "TestPass789!"
+    },
+    {
+      "firstName": "Emily",
+      "middleName": "Grace",
+      "lastName": "Williams",
+      "password": "EmilyPass321!"
+    }
+  ]
+}

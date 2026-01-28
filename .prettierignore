@@ -1,0 +1,6 @@
+.github
+.auth
+node_modules
+eslint.config.mts
+playwright.config.ts
+README.md

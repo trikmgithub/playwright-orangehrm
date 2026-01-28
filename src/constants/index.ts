@@ -1,0 +1,1 @@
+export {URLS, CREDENTIALS} from './urls.constant';

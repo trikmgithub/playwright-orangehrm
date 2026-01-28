@@ -1,0 +1,1 @@
+export {default as AddEmployeePage} from './addEmployee.page';

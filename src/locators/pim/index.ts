@@ -1,0 +1,1 @@
+export { default as AddEmployeeLocators } from './addEmployee.locators';
