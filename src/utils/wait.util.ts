@@ -27,8 +27,8 @@ export default class WaitUtil {
   }
 
  
-  static async waitForPageReady(page: Page): Promise<void> {
-    await page.waitForLoadState('networkidle');
+  static async waitForPageReady(page: Page, timeout: number = 10000): Promise<void> {
+    await page.waitForLoadState('domcontentloaded', { timeout });
     
     const spinnerSelectors = [
       '.oxd-loading-spinner',
@@ -40,7 +40,7 @@ export default class WaitUtil {
     for (const selector of spinnerSelectors) {
       const spinner = page.locator(selector);
       if (await spinner.isVisible().catch(() => false)) {
-        await spinner.waitFor({ state: 'hidden', timeout: 10000 }).catch(() => {});
+        await spinner.waitFor({ state: 'hidden', timeout }).catch(() => {});
       }
     }
   }

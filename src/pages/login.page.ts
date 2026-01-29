@@ -13,7 +13,7 @@ export class LoginPage extends BasePage {
 
   async navigate(): Promise<void> {
     await this.goto(URLS.LOGIN);
-    await this.waitForElement(this.locators.loginButton);
+    await this.waitForElementVisible(this.locators.loginButton);
   }
 
   async login(username: string, password: string): Promise<void> {
@@ -36,7 +36,7 @@ export class LoginPage extends BasePage {
   }
 
   async getErrorMessage(): Promise<string> {
-    await this.waitForElement(this.locators.errorAlert);
+    await this.waitForElementVisible(this.locators.errorAlert);
     return await this.locators.errorAlert.textContent() || '';
   }
 

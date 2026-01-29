@@ -30,4 +30,5 @@ test.describe('OrangeHRM Dashboard Tests: Add Employee', () => {
       await addEmployeePage.clickSaveButton();
     });
   }
+
 });

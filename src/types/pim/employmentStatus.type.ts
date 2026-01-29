@@ -1,0 +1,7 @@
+export type EmploymentStatus = 
+    'Freelance' | 
+    'Full-Time Contract' | 
+    'Full-Time Permanent' | 
+    'Full-Time Probation' | 
+    'Part-Time Contract' | 
+    'Part-Time Internship';

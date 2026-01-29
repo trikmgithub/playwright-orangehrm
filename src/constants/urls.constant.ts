@@ -8,6 +8,7 @@ export const URLS = {
   PIM: {
     BASE: '/web/index.php/pim/viewEmployeeList',
     ADD_EMPLOYEE: '/web/index.php/pim/addEmployee',
+    EMPLOYEE_LIST: '/web/index.php/pim/viewEmployeeList',
   },
   ADMIN: {
     BASE: '/web/index.php/admin/viewSystemUsers',

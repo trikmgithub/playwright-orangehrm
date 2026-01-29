@@ -14,6 +14,7 @@ export default class AddEmployeeLocators {
     readonly statusEnabledRadio: Locator;
     readonly passwordInput: Locator;
     readonly confirmPasswordInput: Locator;
+    readonly toastMessage: Locator;
 
     constructor(page: Page) {
         this.addEmployeePageTitle = page.locator('//h6[text()="Add Employee"]');
@@ -29,5 +30,6 @@ export default class AddEmployeeLocators {
         this.statusEnabledRadio = page.locator('//div[contains(@class, "oxd-radio-wrapper")]//input[@value=1]');
         this.passwordInput = page.locator('//label[normalize-space(.)="Password"]/ancestor::div[contains(@class, "oxd-input-group")]//input[@type="password"]');
         this.confirmPasswordInput = page.locator('//label[normalize-space(.)="Confirm Password"]/ancestor::div[contains(@class, "oxd-input-group")]//input[@type="password"]');
+        this.toastMessage = page.locator('//div[contains(@class, "oxd-toast--success")]');
     }
 }

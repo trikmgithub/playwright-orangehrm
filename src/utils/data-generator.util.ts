@@ -21,7 +21,7 @@ export class DataGenerator {
 
   
   static randomEmployeeId(): string {
-    return `EMP${this.randomNumber(10000, 99999)}`;
+    return `${this.randomNumber(10000, 99999)}`;
   }
 
   

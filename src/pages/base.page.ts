@@ -1,4 +1,5 @@
 import { Page, Locator } from '@playwright/test';
+import WaitUtil from '../utils/wait.util';
 
 export class BasePage {
   protected page: Page;
@@ -14,7 +15,11 @@ export class BasePage {
 
 
   async waitForPageLoad(): Promise<void> {
-    await this.page.waitForLoadState('networkidle');
+    await WaitUtil.waitForPageReady(this.page);
+  }
+
+  async waitTimeout(milliseconds: number): Promise<void> {
+    await this.page.waitForTimeout(milliseconds);
   }
 
 
@@ -32,10 +37,9 @@ export class BasePage {
   }
 
 
-  async waitForElement(locator: Locator, timeout: number = 10000): Promise<void> {
+  async waitForElementVisible(locator: Locator, timeout: number = 10000): Promise<void> {
     await locator.waitFor({ state: 'visible', timeout });
   }
-
 
   async waitForElementToHide(locator: Locator, timeout: number = 10000): Promise<void> {
     await locator.waitFor({ state: 'hidden', timeout });
