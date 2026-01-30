@@ -6,6 +6,7 @@ on:
       - master
       - 'feature/**'  # Run on feature branches
       - 'feat/**'     # Run on feat branches
+      - 'fix/**'      # Run on fix branches
   pull_request:
     branches: [ main, master ]
   workflow_dispatch:  # Allow manual trigger from GitHub UI

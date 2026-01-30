@@ -73,12 +73,12 @@ export default class EmployeeListPage extends BasePage {
     }
 
     async isEmployeePresentInList(employeeId: string, timeout: number = 2000): Promise<boolean> {
-        const employeeLocator = this.page.locator(`//div[@class="oxd-table-body"]//div[contains(@class, "oxd-table-row")]//div[text()="${employeeId}"]/ancestor::div[@role="row"]`);
+        const employeeLocator = this.getEmployeeRow(employeeId);
         return await employeeLocator.isVisible({timeout});
     }
 
     getEmployeeRow(employeeId: string): Locator {
-        return this.page.locator(`//div[@class="oxd-table-body"]//div[contains(@class, "oxd-table-row")]//div[text()="${employeeId}"]/ancestor::div[@role="row"]`);
+        return this.page.locator(`//div[contains(@class, "oxd-table-body")]//div[contains(@class, "oxd-table")]//div[contains(@class, "oxd-table-row")]//div[text()="${employeeId}"]/ancestor::div[@role="row"]`);
     }
 
     async getEmployeeId(employeeLocator: Locator): Promise<string> {
@@ -109,8 +109,9 @@ export default class EmployeeListPage extends BasePage {
     }
 
     async verifyEmployeeDetails(employeeId: string, firstName: string, lastName: string, timeout: number = 5000): Promise<boolean> {
+        await this.waitTimeout(timeout);
         const employeeLocator = this.getEmployeeRow(employeeId);
-        await this.waitForElementVisible(employeeLocator, timeout);
+        await this.waitForElementVisible(employeeLocator);
         const actualId = await this.getEmployeeId(employeeLocator);
         const actualFirstName = await this.getFirstName(employeeLocator);
         const actualLastName = await this.getLastName(employeeLocator);
@@ -127,6 +128,15 @@ export default class EmployeeListPage extends BasePage {
             firstName: await this.getFirstName(employeeLocator),
             lastName: await this.getLastName(employeeLocator)
         };
+    }
+
+    async isEmployeeIdPersonalDetailsInputVisible(timeout: number = 5000): Promise<boolean> {
+        return this.locators.employeeIdPersonalDetails.isVisible({timeout});
+    }
+
+    async clickEmployeeInformationButton(): Promise<void> {
+        await this.waitForElementVisible(this.locators.employeeInformationButton);
+        await this.locators.employeeInformationButton.click();
     }
 
 }
