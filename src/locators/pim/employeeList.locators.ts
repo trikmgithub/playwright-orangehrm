@@ -12,6 +12,7 @@ export default class EmployeeListLocators {
     readonly resetButton: Locator;
     readonly personalDetailsPageTitle: Locator;
     readonly employeeIdPersonalDetails: Locator;
+    readonly employeeInformationButton: Locator;
 
     constructor(page: Page) {
         this.employeeNameInput = page.locator('(//div[@class="oxd-autocomplete-wrapper"]//input)[1]');
@@ -25,6 +26,7 @@ export default class EmployeeListLocators {
         this.resetButton = page.locator('//button[@type="reset" and contains(., "Reset")]');
         this.personalDetailsPageTitle = page.locator('//h6[text()="Personal Details"]');
         this.employeeIdPersonalDetails = page.locator('//div[contains(@class, "orangehrm-edit-employee-content")]//label[text()="Employee Id"]/ancestor::div[contains(@class, "oxd-input-group")]//input').first();
+        this.employeeInformationButton = page.getByRole('button').nth(3);
     }
 
 }

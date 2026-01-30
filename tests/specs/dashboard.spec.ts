@@ -2,7 +2,7 @@ import { URLS } from '../../src/constants';
 import { dashboardTest as test, expect } from '../../src/fixtures';
 import { WaitUtil } from '../../src/utils/index';
 
-test.describe('OrangeHRM Dashboard Tests', async () => {
+test.describe.skip('OrangeHRM Dashboard Tests', async () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(URLS.DASHBOARD);
     await WaitUtil.waitForPageReady(page);

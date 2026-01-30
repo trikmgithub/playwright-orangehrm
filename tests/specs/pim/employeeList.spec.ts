@@ -54,10 +54,15 @@ test.describe("PIM - Employee List Page", () => {
     });
     
     test("should search employee by ID", async ({ employeeListPage }) => {
+        await employeeListPage.waitTimeout(2);
+        if (! await employeeListPage.isEmployeeIdPersonalDetailsInputVisible()) {
+            await employeeListPage.clickEmployeeInformationButton();
+        }
         await employeeListPage.fillEmployeeId(employeeId);
         await employeeListPage.clickSearchButton();
         await employeeListPage.waitTimeout(2);
         const isEmployeePresentInList = await employeeListPage.isEmployeePresentInList(employeeId);
+        await employeeListPage.waitTimeout(2);
         console.log(`Searching for Employee ID ${employeeId}: ${isEmployeePresentInList}`);
         await employeeListPage.verifyEmployeeDetails(employeeId, firstName,  lastName);
     });
