@@ -6,6 +6,7 @@ import employeeData from "../../../test-data/employees.json" with { type: "json"
 test.describe('OrangeHRM Dashboard Tests: Add Employee', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(URLS.PIM.ADD_EMPLOYEE);
+    await page.waitForTimeout(2000);
     await WaitUtil.waitForPageReady(page);
   });
 
@@ -21,7 +22,7 @@ test.describe('OrangeHRM Dashboard Tests: Add Employee', () => {
       
       const employeeId = await addEmployeePage.getEmployeeIdValue();
       console.log(`Employee ID: ${employeeId}`);
-      
+      await addEmployeePage.waitTimeout(3000);
       await addEmployeePage.switchOnCreateLoginDetails();
       await addEmployeePage.fillUsername(`${employee.firstName.toLowerCase()}_${employeeId}`);
       await addEmployeePage.enableStatus();
