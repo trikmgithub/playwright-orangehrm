@@ -45,14 +45,14 @@ export default class AddEmployeePage extends BasePage {
         return await this.locators.employeeIdInput.inputValue();
     }
 
-    async switchOnCreateLoginDetails(): Promise<void> {
+    async switchOnCreateLoginDetails(timeout: number = 3000): Promise<void> {
         await this.waitForElementVisible(this.locators.createLoginDetailsSwitch);
         
         const isChecked = await this.locators.createLoginDetailsSwitch.isChecked();
-        
+        await this.waitTimeout(timeout);
         if (!isChecked) {
             await this.locators.createLoginDetailsSwitch.scrollIntoViewIfNeeded();
-            
+            await this.waitTimeout(timeout);
             await this.locators.createLoginDetailsSwitch.setChecked(true, { force: true });
         }
     }
